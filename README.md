@@ -4,6 +4,7 @@ The applciation uses this key via an environment file. You can create your own e
 
 The contents of those files need to be the following
 
+```
 export const environment {
 
   production: true/false
@@ -11,9 +12,11 @@ export const environment {
   ebirdKey: {{API KEY}}
 
 }
+```
 
 Project can be run after 
 
+```
 npm i
-
 ionic serve
+```
