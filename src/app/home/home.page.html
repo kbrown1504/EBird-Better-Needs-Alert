@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-grid class="search-options">
-    <ion-row>
+    <ion-row class="inputs">
       <ion-col>
         <ion-item>
           <ion-input [(ngModel)]="region" label="Region:" disabled></ion-input>
@@ -24,6 +24,8 @@
           <ion-label>Only Show Rare Sightings: </ion-label>
           <ion-toggle (ionChange)="rareChange()" [(ngModel)]="onlyRare"></ion-toggle>
         </ion-item>
+      </ion-col>
+      <ion-col>
         <ion-item>
           <ion-label>Only Show Confirmed Sightings: </ion-label>
           <ion-toggle [(ngModel)]="onlyReviewed" [disabled]="!onlyRare"></ion-toggle>
@@ -33,15 +35,28 @@
         <ion-button expand="block" (click)="search()">Search</ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+    </ion-row>
+    <ion-row class="main-content">
+      <ion-col size="3">
+        <ion-content stlye="height: 100%">
+          <ion-list>
+            <ion-item *ngFor="let bird of sightings">
+              <div *ngIf="!onlyReviewed || (onlyReviewed && bird.obsValid)">    
+                <ion-card-title>
+                  {{bird.comName}}
+                </ion-card-title>
+                <ion-card-subtitle>
+                  Last seen at {{bird.locName}} on {{bird.obsDt}}
+                </ion-card-subtitle>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-col>
+      <ion-col size="9">
+        <div class="map-div"></div>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-  <div *ngFor="let bird of sightings">
-    <ion-card *ngIf="!onlyReviewed || (onlyReviewed && bird.obsValid)">    
-      <ion-card-title>
-        {{bird.comName}}
-      </ion-card-title>
-      <ion-card-subtitle>
-        Last seen at {{bird.locName}} on {{bird.obsDt}}
-      </ion-card-subtitle>
-    </ion-card>
-  </div>
 </ion-content>
