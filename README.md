@@ -6,11 +6,8 @@ The contents of those files need to be the following
 
 ```
 export const environment {
-
-  production: true/false
-  
+  production: {{true/false}}  
   ebirdKey: {{API KEY}}
-
 }
 ```
 
