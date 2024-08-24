@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Search for recent sightings
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-grid class="search-options">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input [(ngModel)]="region" label="Region:" disabled></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input [(ngModel)]="days" label="Days to search:" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Only Show Rare Sightings: </ion-label>
+          <ion-toggle (ionChange)="rareChange()" [(ngModel)]="onlyRare"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Only Show Confirmed Sightings: </ion-label>
+          <ion-toggle [(ngModel)]="onlyReviewed" [disabled]="!onlyRare"></ion-toggle>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" (click)="search()">Search</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngFor="let bird of sightings">
+    <ion-card *ngIf="!onlyReviewed || (onlyReviewed && bird.obsValid)">    
+      <ion-card-title>
+        {{bird.comName}}
+      </ion-card-title>
+      <ion-card-subtitle>
+        Last seen at {{bird.locName}} on {{bird.obsDt}}
+      </ion-card-subtitle>
+    </ion-card>
   </div>
 </ion-content>
