@@ -1,4 +1,4 @@
-This project uses the eBird API 2.0. In order to access this API, and API key is required.
+This project uses the eBird API 2.0. In order to access this API, an API key is required.
 
 The applciation uses this key via an environment file. You can create your own environment file/s at src/environments/environment.ts and src/environment/environment.prod.ts
 
