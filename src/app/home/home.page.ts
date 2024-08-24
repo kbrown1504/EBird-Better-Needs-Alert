@@ -11,7 +11,7 @@ export class HomePage {
   sightings: any[] = []
 
   days = 1;
-  region = "Nebraksa"
+  region = "Nebraska"
   onlyRare = false
   onlyReviewed = false
 
