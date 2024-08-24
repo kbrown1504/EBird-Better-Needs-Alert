@@ -8,5 +8,7 @@ export const environment {
 }
 
 Project can be run after 
-npm i
-ionic serve
+
+# npm i
+
+# ionic serve
