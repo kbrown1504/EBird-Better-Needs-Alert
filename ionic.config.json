@@ -1,0 +1,7 @@
+{
+  "name": "Bird Needs map",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
